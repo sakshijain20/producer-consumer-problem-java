@@ -39,7 +39,7 @@ public class Consumer implements Runnable{
     private void processMessage(Message data) {
         boolean isInValid = Boolean.parseBoolean(data.getData());
 
-        if (isInValid) {
+        if (!isInValid) {
             throw new RuntimeException("Failed to process the message: " + data);
         }
 
