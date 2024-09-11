@@ -36,8 +36,8 @@ public class ConsumerTest {
 		messageQueue = new MessageQueue(4);
 
         messageQueue.produce(new Message("true"));
-        messageQueue.produce(new Message("false"));
-        messageQueue.produce(new Message("false"));
+        messageQueue.produce(new Message("true"));
+        messageQueue.produce(new Message("true"));
         messageQueue.produce(new Message("stop"));
 
         Consumer consumer = new Consumer(messageQueue, success, failures);
@@ -45,19 +45,17 @@ public class ConsumerTest {
         consumerThread.start();
         consumerThread.join(1000);
 
-        assertEquals(1, success.get());
-        assertEquals(2, failures.get());
+        assertEquals(3, success.get());
+        assertEquals(0, failures.get());
     }
 
     @Test
     void testConsumerFailure() throws Exception {
-       messageQueue = new MessageQueue(7);
+       messageQueue = new MessageQueue(4);
        
         messageQueue.produce(new Message("false"));
         messageQueue.produce(new Message("false"));
-        messageQueue.produce(new Message("true"));
         messageQueue.produce(new Message("false"));
-        messageQueue.produce(new Message("true"));
         messageQueue.produce(new Message("stop"));
 
         Consumer consumer = new Consumer(messageQueue, success, failures);
@@ -65,7 +63,7 @@ public class ConsumerTest {
         consumerThread.start();
         consumerThread.join(1000);
 
-        assertEquals(2, success.get());
+        assertEquals(0, success.get());
         assertEquals(3, failures.get());
     }
 

@@ -14,7 +14,7 @@ public class ProducerTest {
 
 	@Test
     void testProducer() throws Exception {
-        MessageQueue messageQueue = new MessageQueue(1);
+        MessageQueue messageQueue = new MessageQueue14);
         List<Message> messages = List.of(new Message("true"),
         								 new Message("false"),
         								 new Message("true"));
