@@ -2,14 +2,14 @@ package core.java.producer_consumer.messageQueue;
 
 public class Message {
 	
-	private String data;
+	private final String data;
 
 	public Message(String data) {
 		this.data = data;
 	}
 
-	public void setData(String data) {
-		this.data = data;
+	public String getData() {
+		return this.data;
 	}
 
 	@Override
