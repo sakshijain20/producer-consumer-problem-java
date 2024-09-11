@@ -12,9 +12,10 @@ import core.java.producer_consumer.producer.Producer;
 
 public class ProducerTest {
 
+	//test to check if the producer produces correct messages
 	@Test
     void testProducer() throws Exception {
-        MessageQueue messageQueue = new MessageQueue14);
+        MessageQueue messageQueue = new MessageQueue(1);
         List<Message> messages = List.of(new Message("true"),
         								 new Message("false"),
         								 new Message("true"));

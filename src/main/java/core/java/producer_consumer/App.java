@@ -12,10 +12,12 @@ import java.util.List;
 public class App {
 	
     public static void main(String[] args) {
+    	//created message queue of size 5
     	MessageQueue messageQueue = new MessageQueue(5);
         AtomicInteger success = new AtomicInteger();
         AtomicInteger failures = new AtomicInteger();
 
+        //created thread for producer
         Thread producerThread = new Thread(new Producer(messageQueue,
         												List.of(new Message("true"),
         														new Message("false"),
@@ -26,9 +28,10 @@ public class App {
         														new Message("false"),
         														new Message("stop")
         												)));
-
+        //created thread for consumer
         Thread consumerThread = new Thread(new Consumer(messageQueue, success, failures));
 
+       //started producer and consumer thread respectively 
         producerThread.start();
         consumerThread.start();
 

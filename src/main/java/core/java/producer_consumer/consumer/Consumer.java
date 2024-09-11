@@ -22,11 +22,12 @@ public class Consumer implements Runnable{
         	
             try {
                 Message data = messageQueue.consume();
-                
+                //If we get data as stop the application will stop 
                 if (data.getData().equals("stop")) {
                     break;
                 }
                 
+                //if the message is successfully executed success count will get incremented else failure count
                 processMessage(data);
                 success.incrementAndGet();
             } 

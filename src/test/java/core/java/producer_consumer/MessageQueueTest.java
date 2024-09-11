@@ -13,6 +13,7 @@ public class MessageQueueTest {
 
 	MessageQueue messageQueue;
 	
+	//test to check if the queue is empty
 	@Test
     void emptyQueueTest() throws Exception {
         messageQueue = new MessageQueue(2);
@@ -32,6 +33,7 @@ public class MessageQueueTest {
         consumerThread.join();
     }
 	
+	//test to check if the queue is full
     @Test
     void fullQueueTest() throws Exception {
     	messageQueue = new MessageQueue(2);
@@ -52,7 +54,8 @@ public class MessageQueueTest {
         messageQueue.consume();
         producerThread.join();
     }
-
+    
+	//test to check if the queue can produce and consume message successfully
     @Test
     void produceAndConsumeTest() throws Exception {
         messageQueue = new MessageQueue(3);

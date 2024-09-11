@@ -16,6 +16,7 @@ public class ConsumerTest {
 	 AtomicInteger success = new AtomicInteger();
      AtomicInteger failures = new AtomicInteger();
      
+     //if we get stop as data, the application would stop
      @Test
      void testConsumerTermination() throws Exception {
          messageQueue = new MessageQueue(3);
@@ -31,6 +32,7 @@ public class ConsumerTest {
          assertEquals(0, failures.get());
      }
 
+     //test to check if the messages are successfully executed
 	@Test
     void testConsumerSuccess() throws Exception {
 		messageQueue = new MessageQueue(4);
@@ -49,6 +51,7 @@ public class ConsumerTest {
         assertEquals(0, failures.get());
     }
 
+	  //test to check if the messages are failures
     @Test
     void testConsumerFailure() throws Exception {
        messageQueue = new MessageQueue(4);
